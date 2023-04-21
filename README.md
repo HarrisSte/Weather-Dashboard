@@ -1,2 +1,11 @@
-# Weather Dashboard
- An application that displays a 5 day weather forecast based on user request
+# WEATHER DASHBOARD 
+
+# Description
+
+# Link
+ADD LINK TO DEPLOYED SITE HERE
+
+# Screenshot
+ADD SCREENSHOT HERE
+
+# Contribtions
