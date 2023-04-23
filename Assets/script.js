@@ -13,17 +13,19 @@ function getWeather() {
     "https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=$9e7d1b0a51b2cdd53ceb30a255a08f48&units=imperial";
 }
 
-$("#searchBtn").on("click", function (event) {
-  event.preventDefault();
-  var cityInput = $("#input").val();
-  var allCities = [];
+$(document).ready(function) () {
+ 
+    $("#basic-text1").on("click"), function (event) {
+      event.preventDefault();
+      var cityInput = $("#input").val();
+      var allCities = [];
+  
+      allCities = JSON.parse(localStorage.getItem("allCities")) || [];
+      allCities.push(cityInput);
+      localStorage.setItem("allCities", JSON.stringify(allCities));
+      showWeather(cityInput);
+    }};
 
-  allCities = JSON.parse(localStorage.getItem("allCities")) || [];
-  allCities.push(cityInput);
-  localStorage.setItem("allCities", JSON.stringify(allCities));
-
-  showWeather(cityInput);
-});
 
 $("dailyWeather").empty();
 $("#fiveDay").empty();
