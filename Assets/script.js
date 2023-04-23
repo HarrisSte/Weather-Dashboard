@@ -26,6 +26,9 @@ var day5 = dayjs().format(5, "YYYY-MM-DD");
 //       showWeather(cityInput);
 //     });
 
+function showWeather(cityInput) {
+    var oneDay = "http://api.openweathermap.org/data/2.5/forecast?id=" + cityInput + "&units=imperial"
+}
 $("dailyWeather").empty();
 $("#fiveDay").empty();
 $("#day1").empty();
