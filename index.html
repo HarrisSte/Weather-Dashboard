@@ -21,15 +21,39 @@
             <h1>Search for a City:</h1>
             <nav id="userInput" class="navbar bg-light">
                 <div class="container-fluid">
-                  <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                  </form>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
                 </div>
-              </nav>
-    
+            </nav>
+            <main class="container col-md-9">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div id="dailyWeather" class="body"></div>
+                        </div>
+                    </div>
+                </div>
+            </main>
 
+            <section class="row">
+                <div class="col-md-12" id="fiveDay"></div>
+            </section>
 
+            <section class="row">
+                <section class="row">
+                    <div class="col-md-12" id="dailyforcast">
+                        <div class="card-deck col s12 m">
+                            <div id="day1"></div>
+                            <div id="day2"></div>
+                            <div id="day3"></div>
+                            <div id="day4"></div>
+                            <div id="day5"></div>
+                        </div>
+                    </div>
+                </section>
+            </section>
         </div>
 
     </aside>
