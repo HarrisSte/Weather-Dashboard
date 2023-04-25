@@ -1,5 +1,4 @@
 //Variables & days for weather
-var apiKey = "9e7d1b0a51b2cdd53ceb30a255a08f48";
 var currentDate = dayjs().format("YYYY-MM-DD");
 var day1 = dayjs().format(1, "YYYY-MM-DD");
 var day2 = dayjs().format(2, "YYYY-MM-DD");
@@ -26,19 +25,6 @@ var day5 = dayjs().format(5, "YYYY-MM-DD");
 
 //       showWeather(cityInput);
 //     });
-$(document).ready(function () {
-  $("#basic-text1").on("click", function (event) {
-    event.preventDefault();
-    var cityInput = $("#input").val();
-    var allCities = [];
-
-    allCities = JSON.parse(localStorage.getItem("allCities")) || [];
-    allCities.push(cityInput);
-    localStorage.setItem("allCities", JSON.stringify(allCities));
-
-    showWeather(cityInput);
-  })
-});
 
 function showWeather(cityInput) {
   $("dailyWeather").empty();
