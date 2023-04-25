@@ -27,15 +27,59 @@ var day5 = dayjs().format(5, "YYYY-MM-DD");
 //     });
 
 function showWeather(cityInput) {
-    var oneDay = "http://api.openweathermap.org/data/2.5/forecast?id=" + cityInput + "&units=imperial"
+  $("dailyWeather").empty();
+  $("#fiveDay").empty();
+  $("#day1").empty();
+  $("#day2").empty();
+  $("#day3").empty();
+  $("#day4").empty();
+  $("#day5").empty();
+
+  var oneDay =
+    "http://api.openweathermap.org/data/2.5/forecast?id=" +
+    cityInput +
+    "&units=imperial";
+
+  $.ajax({
+    url: oneDay,
+    method: "GET",
+  }).then(function (response) {
+    var iconUrl =
+      "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
+    var lat = response.coord.lat;
+    var lon = response.coord.lon;
+
+    $("#dailyWeather").append(
+      "<div class='col s12 m6'>" +
+        "<h2 class='daily'>" +
+        response.name +
+        " (" +
+        startDate +
+        ")" +
+        "&nbsp" +
+        "<img src='" +
+        iconUrl +
+        "'>" +
+        "</h2>" +
+        "<ul class='daily'>" +
+        "Temperature: " +
+        response.main.temp +
+        " °F" +
+        "</ul>" +
+        "<ul class='daily'>" +
+        "Humidity: " +
+        response.main.humidity +
+        "%" +
+        "</ul>" +
+        "<ul class='daily'>" +
+        "Wind Speed: " +
+        response.wind.speed +
+        " MPH" +
+        "</ul>" +
+        "</div>"
+    );
+  });
 }
-$("dailyWeather").empty();
-$("#fiveDay").empty();
-$("#day1").empty();
-$("#day2").empty();
-$("#day3").empty();
-$("#day4").empty();
-$("#day5").empty();
 
 //Set up response for when user clicks/enters city information
 //add WeatherAPI
