@@ -1,16 +1,16 @@
 // Variables & API key from OpenWeather API
-const apiKey = "9e7d1b0a51b2cdd53ceb30a255a08f48";
-var currentDay = $(".currentDay");
-var day1 = $(".day1");
-var day2 = $(".day2");
-var day3 = $(".day3");
-var day4 = $(".day4");
-var day5 = $(".day5");
+const apiKey = "59e621791d69e3841a207d4d84317cf4";
+const currentDay = $(".currentDay");
+const day1 = $(".day1");
+const day2 = $(".day2");
+const day3 = $(".day3");
+const day4 = $(".day4");
+const day5 = $(".day5");
 
-// Function to fetch weather data for city input
+// Function to fetch weather data for a given city
 async function fetchWeatherData(city) {
   const response = await fetch(
-    `http://api.openweathermap.org/geo/1.0/reverse?lat={lat}&lon={lon}&limit={limit}&appid={API key}`
+    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`
   );
   const data = await response.json();
   return data;
@@ -22,8 +22,8 @@ function displayWeatherData(city, data) {
   container.innerHTML = `
     <h2>${city}</h2>
     <p>Temperature: ${data.main.temp} F</p>
-    <p>Humidity: ${data.main.humidity} %</p>
     <p>Wind Speed: ${data.wind.speed} m/s</p>
+    <p>Humidity: ${data.main.humidity} %</p>
   `;
 }
 
