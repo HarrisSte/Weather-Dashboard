@@ -19,3 +19,15 @@ header {
     padding: 25px;
 }
 
+h1 {
+    font-size: 26px;
+}
+
+h2 {
+    padding-top: 1rem;
+}
+
+#fiveDayForecast h1 {
+    font-size: 30px;
+    margin-left: 20rem;
+}

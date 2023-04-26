@@ -1,10 +1,16 @@
 // Variables & API key from OpenWeather API
 const apiKey = "9e7d1b0a51b2cdd53ceb30a255a08f48";
+var currentDay = $(".currentDay");
+var day1 = $(".day1");
+var day2 = $(".day2");
+var day3 = $(".day3");
+var day4 = $(".day4");
+var day5 = $(".day5");
 
 // Function to fetch weather data for city input
 async function fetchWeatherData(city) {
   const response = await fetch(
-    `api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}`
+    `http://api.openweathermap.org/geo/1.0/reverse?lat={lat}&lon={lon}&limit={limit}&appid={API key}`
   );
   const data = await response.json();
   return data;
@@ -15,86 +21,47 @@ function displayWeatherData(city, data) {
   const container = document.getElementById("weather-container");
   container.innerHTML = `
     <h2>${city}</h2>
-    <p>Temperature: ${data.main.temp} K</p>
+    <p>Temperature: ${data.main.temp} F</p>
     <p>Humidity: ${data.main.humidity} %</p>
     <p>Wind Speed: ${data.wind.speed} m/s</p>
   `;
 }
 
-// function getWeather() {
-//   var apiKey = "9e7d1b0a51b2cdd53ceb30a255a08f48";
-//   var location = document.getElementById("location").value;
-//   var apiUrl =
-//     "https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=$9e7d1b0a51b2cdd53ceb30a255a08f48&units=imperial";
-// }
+// Function to save searched cities in local storage
+function saveSearch(city) {
+  const history = localStorage.getItem("search-history") || "[]";
+  const searchHistory = JSON.parse(history);
+  searchHistory.push(city);
+  localStorage.setItem("search-history", JSON.stringify(searchHistory));
+}
 
-// function (cityInput) {
-//     $("#searchBtn").on("click"), function (event) {
-//       event.preventDefault();
-//       var cityInput = $("#input").val();
-//       var allCities = [];
+// Function to retrieve search history from local storage
+function getSearchHistory() {
+  const history = localStorage.getItem("search-history") || "[]";
+  const searchHistory = JSON.parse(history);
+  const container = document.getElementById("search-history");
+  container.innerHTML = "";
+  for (const city of searchHistory) {
+    const li = document.createElement("li");
+    li.innerText = city;
+    container.appendChild(li);
+  }
+}
 
-//       allCities = JSON.parse(localStorage.getItem("allCities")) || [];
-//       allCities.push(cityInput);
-//       localStorage.setItem("allCities", JSON.stringify(allCities));
+// Function to handle button click
+function handleButtonClick() {
+  const input = document.getElementById("city-input");
+  const city = input.value;
+  fetchWeatherData(city)
+    .then((data) => {
+      displayWeatherData(city, data);
+      saveSearch(city);
+      getSearchHistory();
+    })
+    .catch((error) => console.log(error));
+}
 
-//       showWeather(cityInput);
-//     });
-
-// function showWeather(cityInput) {
-//   $("dailyWeather").empty();
-//   $("#fiveDay").empty();
-//   $("#day1").empty();
-//   $("#day2").empty();
-//   $("#day3").empty();
-//   $("#day4").empty();
-//   $("#day5").empty();
-
-//   var oneDay =
-//     "http://api.openweathermap.org/data/2.5/forecast?id=" +
-//     cityInput +
-//     "&units=imperial";
-
-//   $.ajax({
-//     url: oneDay,
-//     method: "GET",
-//   }).then(function (response) {
-//     var iconUrl =
-//       "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
-//     var lat = response.coord.lat;
-//     var lon = response.coord.lon;
-
-//     $("#dailyWeather").append(
-//       "<div class='col s12 m6'>" +
-//         "<h2 class='daily'>" +
-//         response.name +
-//         " (" +
-//         startDate +
-//         ")" +
-//         "&nbsp" +
-//         "<img src='" +
-//         iconUrl +
-//         "'>" +
-//         "</h2>" +
-//         "<ul class='daily'>" +
-//         "Temperature: " +
-//         response.main.temp +
-//         " °F" +
-//         "</ul>" +
-//         "<ul class='daily'>" +
-//         "Humidity: " +
-//         response.main.humidity +
-//         "%" +
-//         "</ul>" +
-//         "<ul class='daily'>" +
-//         "Wind Speed: " +
-//         response.wind.speed +
-//         " MPH" +
-//         "</ul>" +
-//         "</div>"
-//     );
-//   });
-// }
-
-//Set up response for when user clicks/enters city information
-//add WeatherAPI
+// Event listeners for button click and search history retrieval
+const searchButton = document.getElementById("search-button");
+searchButton.addEventListener("click", handleButtonClick);
+window.addEventListener("load", getSearchHistory);
