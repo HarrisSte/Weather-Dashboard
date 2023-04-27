@@ -1,6 +1,6 @@
 // Variables & API key from OpenWeather API
 const apiKey = "59e621791d69e3841a207d4d84317cf4";
-const currentDay = $(".currentDay");
+// const currentDay = $(".currentDay");
 const day1 = $(".day1");
 const day2 = $(".day2");
 const day3 = $(".day3");
@@ -14,6 +14,45 @@ async function fetchWeatherData(city) {
   );
   const data = await response.json();
   return data;
+}
+
+async function fetchWeatherDataLatLon(lat, lon) {
+  const response = await fetch(
+    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`
+  );
+  const data = await response.json();
+  return data;
+}
+
+async function fetchCityLatLon(city) {
+  const response = await fetch(
+    `http://api.openweathermap.org/geo/1.0/direct?q=${city},US&limit=1&appid=${apiKey}`
+  );
+  const data = await response.json();
+  return data;
+}
+
+async function fetchForecastDataLatLon(lat, lon) {
+  const response = await fetch(
+    `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`
+  );
+  const data = await response.json();
+  return data;
+}
+
+function displayForecastData(data) {
+  const forecast = data.list;
+
+  for (let i = 0; i < 5; i++) {
+    const day = forecast[i];
+    const container = document.getElementById("day1");
+    container.innerHTML = `
+      <h2>${city}</h2>
+      <p>Temperature: ${data.main.temp} F</p>
+      <p>Wind Speed: ${data.wind.speed} m/s</p>
+      <p>Humidity: ${data.main.humidity} %</p>
+    `;
+  }
 }
 
 // Function to display weather data for a given city
@@ -52,11 +91,22 @@ function getSearchHistory() {
 function handleButtonClick() {
   const input = document.getElementById("city-input");
   const city = input.value;
-  fetchWeatherData(city)
-    .then((data) => {
-      displayWeatherData(city, data);
-      saveSearch(city);
-      getSearchHistory();
+
+  fetchCityLatLon(city)
+    .then((cityData) => {
+      fetchWeatherDataLatLon(cityData[0].lat, cityData[0].lon)
+        .then((data) => {
+          displayWeatherData(city, data);
+          saveSearch(city);
+          getSearchHistory();
+        })
+        .catch((error) => console.log(error));
+
+      fetchForecastDataLatLon(cityData[0].lat, cityData[0].lon)
+        .then((data) => {
+          displayForecastData(data);
+        })
+        .catch((error) => console.log(error));
     })
     .catch((error) => console.log(error));
 }
