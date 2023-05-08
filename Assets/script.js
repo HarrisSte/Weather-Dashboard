@@ -45,12 +45,12 @@ function displayForecastData(data) {
 
   for (let i = 0; i < 5; i++) {
     const day = forecast[i];
-    const container = document.getElementById("day1");
+    const container = document.getElementById("day" + i);
     container.innerHTML = `
-      <h2>${city}</h2>
-      <p>Temperature: ${data.main.temp} F</p>
-      <p>Wind Speed: ${data.wind.speed} m/s</p>
-      <p>Humidity: ${data.main.humidity} %</p>
+      <h2>${day.dt_txt}</h2>
+      <p>Temperature: ${day.main.temp} F</p>
+      <p>Wind Speed: ${day.wind.speed} m/s</p>
+      <p>Humidity: ${day.main.humidity} %</p>
     `;
   }
 }
@@ -115,3 +115,15 @@ function handleButtonClick() {
 const searchButton = document.getElementById("search-button");
 searchButton.addEventListener("click", handleButtonClick);
 window.addEventListener("load", getSearchHistory);
+
+
+
+
+
+
+
+
+  //Save user seach to localStorage
+  var history = JSON.parse(localStorage.getItem("searchHistory")) || [];
+  history.push(searchInput);
+  localStorage.setItem("searchHistory", JSON.stringify(history));
