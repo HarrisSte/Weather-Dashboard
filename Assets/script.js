@@ -1,4 +1,4 @@
-// Variables & API key from OpenWeather API
+//Variables & API key from OpenWeather API
 const apiKey = "59e621791d69e3841a207d4d84317cf4";
 // const currentDay = $(".currentDay");
 const day1 = $(".day1");
@@ -115,15 +115,3 @@ function handleButtonClick() {
 const searchButton = document.getElementById("search-button");
 searchButton.addEventListener("click", handleButtonClick);
 window.addEventListener("load", getSearchHistory);
-
-
-
-
-
-
-
-
-  //Save user seach to localStorage
-  // var history = JSON.parse(localStorage.getItem("searchHistory")) || [];
-  // history.push(searchInput);
-  // localStorage.setItem("searchHistory", JSON.stringify(history));
