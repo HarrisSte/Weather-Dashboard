@@ -29,21 +29,22 @@ h2 {
 
 #weather-container {
     border: 2px solid black;
-    /* margin: 20px 50px 20px 0; */
+    margin-right: 30rem;
+    margin-left: 40rem;
 
 }
 
 #fiveDayForecast h1 {
-    font-size: 30px;
-    margin-left: 20rem;
+    font-size: 35px;
+    margin-left: 28rem;
+    color: navy
 }
 
 /* Style for header */
 #header {
-    font-size: 24px;
+    font-size: 29px;
     font-weight: bold;
     padding: 20px;
-    background-color: #333;
     color: #fff;
 }
 
@@ -85,33 +86,62 @@ h2 {
 
 #search-history li {
     margin-bottom: 5px;
-}
-
-/* Style for main container */
-main {
-    margin-top: 20px;
+    font-size: 22px;
 }
 
 /* Style for daily weather card */
-.card {
-    margin-bottom: 20px;
-    padding: 20px;
-    background-color: #f5f5f5;
+#day0 {
+    background-color: lightblue;
+    border: 1px solid #ccc;
     border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+#day1 {
+    background-color: lightblue;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+
+#day2 {
+    background-color: lightblue;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+
+#day3 {
+    background-color: lightblue;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+
+#day4 {
+    background-color: lightblue;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 /* Style for five-day forecast section */
 #fiveDay {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
-/* Style for daily forecast cards */
-#dailyforcast .card-deck {
-    margin-bottom: 20px;
-}
 
-#dailyforcast .card {
-    padding: 10px;
-    background-color: #f5f5f5;
-    border-radius: 5px;
-}
+

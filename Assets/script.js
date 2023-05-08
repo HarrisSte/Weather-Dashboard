@@ -124,6 +124,6 @@ window.addEventListener("load", getSearchHistory);
 
 
   //Save user seach to localStorage
-  var history = JSON.parse(localStorage.getItem("searchHistory")) || [];
-  history.push(searchInput);
-  localStorage.setItem("searchHistory", JSON.stringify(history));
+  // var history = JSON.parse(localStorage.getItem("searchHistory")) || [];
+  // history.push(searchInput);
+  // localStorage.setItem("searchHistory", JSON.stringify(history));
