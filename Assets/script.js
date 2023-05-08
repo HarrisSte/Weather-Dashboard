@@ -83,15 +83,14 @@ function getSearchHistory() {
   for (const city of searchHistory) {
     const li = document.createElement("li");
     li.innerText = city;
+    li.classList.add("search-item"); // Add the class "search-item"
     container.appendChild(li);
   }
 }
 
 // Function to handle button click
-function handleButtonClick() {
-  const input = document.getElementById("city-input");
-  const city = input.value;
-
+// Function to fetch and display weather data for a given city
+function handleWeatherData(city) {
   fetchCityLatLon(city)
     .then((cityData) => {
       fetchWeatherDataLatLon(cityData[0].lat, cityData[0].lon)
@@ -110,6 +109,29 @@ function handleButtonClick() {
     })
     .catch((error) => console.log(error));
 }
+
+// Function to handle button click
+function handleButtonClick() {
+  const input = document.getElementById("city-input");
+  const city = input.value;
+  handleWeatherData(city);
+}
+
+// Function to handle click on search history item
+function handleSearchHistoryClick(event) {
+  const city = event.target.innerText;
+  handleWeatherData(city);
+}
+
+// Add event listener to search history items
+const searchHistoryContainer = document.getElementById(
+  "search-history-container"
+);
+searchHistoryContainer.addEventListener("click", function (event) {
+  if (event.target.classList.contains("search-item")) {
+    handleSearchHistoryClick(event);
+  }
+});
 
 // Event listeners for button click and search history retrieval
 const searchButton = document.getElementById("search-button");
