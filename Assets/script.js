@@ -26,7 +26,7 @@ async function fetchWeatherDataLatLon(lat, lon) {
 
 async function fetchCityLatLon(city) {
   const response = await fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${city},US&limit=1&appid=${apiKey}`
+    `https://api.openweathermap.org/geo/1.0/direct?q=${city},US&limit=1&appid=${apiKey}`
   );
   const data = await response.json();
   return data;
