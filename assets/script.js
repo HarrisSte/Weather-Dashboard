@@ -1,6 +1,5 @@
 //Variables & API key from OpenWeather API
 const apiKey = "59e621791d69e3841a207d4d84317cf4";
-// const currentDay = $(".currentDay");
 const day1 = $(".day1");
 const day2 = $(".day2");
 const day3 = $(".day3");
@@ -40,22 +39,31 @@ async function fetchForecastDataLatLon(lat, lon) {
   return data;
 }
 
+//Function that displays the five day forecast
 function displayForecastData(data) {
   const forecast = data.list;
 
-  for (let i = 0; i < 5; i++) {
+  let dayCounter = 0;
+
+  // Increment by 8 instead of 1 to skip three-hour intervals
+  for (let i = 0; i < forecast.length; i += 8) {
     const day = forecast[i];
-    const container = document.getElementById("day" + i);
+    // Removes the date portion
+    const date = day.dt_txt.split(" ")[0];
+
+    const container = document.getElementById("day" + dayCounter);
     container.innerHTML = `
-      <h2>${day.dt_txt}</h2>
+      <h2>${date}</h2>
       <p>Temperature: ${day.main.temp} F</p>
       <p>Wind Speed: ${day.wind.speed} m/s</p>
       <p>Humidity: ${day.main.humidity} %</p>
     `;
+    // Increment the day counter
+    dayCounter++;
   }
 }
 
-// Function to display weather data for a given city
+// Function to display weather data for one given city
 function displayWeatherData(city, data) {
   const container = document.getElementById("weather-container");
   container.innerHTML = `
@@ -88,8 +96,7 @@ function getSearchHistory() {
   }
 }
 
-// Function to handle button click
-// Function to fetch and display weather data for a given city
+// Function to handle button click to fetch and display weather data for a given city
 function handleWeatherData(city) {
   fetchCityLatLon(city)
     .then((cityData) => {
