@@ -75,17 +75,23 @@ h2 {
 #search-history-container h2 {
     font-size: 25px;
     font-weight: bold;
+    border: solid black 1px;
+    margin-right: 80rem;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 #search-history {
     list-style: none;
     padding: 0;
+    margin-right: 80rem;
 }
 
 #search-history li {
+    background-color: lightblue;
     margin-bottom: 5px;
+    margin-right: 5px;
     font-size: 22px;
+    border: solid black 1px;
 }
 
 /* Style for daily weather card */

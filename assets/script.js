@@ -54,8 +54,7 @@ function displayForecastData(data) {
 
     const container = document.getElementById('day' + dayCounter);
     container.innerHTML = `
-      <h2>${date}</h2>
-      <img src="${weatherIcon}${day.weather[0].icon}.png" alt="Weather Icon" />
+      <h2>${date}</h2> <img src="${weatherIcon}${day.weather[0].icon}.png" alt="Weather Icon" />
       <p>Temperature: ${day.main.temp} F</p>
       <p>Wind Speed: ${day.wind.speed} m/s</p>
       <p>Humidity: ${day.main.humidity} %</p>
