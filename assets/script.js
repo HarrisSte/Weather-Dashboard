@@ -1,10 +1,11 @@
 //Variables & API key from OpenWeather API
-const apiKey = "59e621791d69e3841a207d4d84317cf4";
-const day1 = $(".day1");
-const day2 = $(".day2");
-const day3 = $(".day3");
-const day4 = $(".day4");
-const day5 = $(".day5");
+const apiKey = '59e621791d69e3841a207d4d84317cf4';
+const day1 = $('.day1');
+const day2 = $('.day2');
+const day3 = $('.day3');
+const day4 = $('.day4');
+const day5 = $('.day5');
+var weatherIcon = 'http://openweathermap.org/img/wn/';
 
 // Function to fetch weather data for a given city
 async function fetchWeatherData(city) {
@@ -49,11 +50,12 @@ function displayForecastData(data) {
   for (let i = 0; i < forecast.length; i += 8) {
     const day = forecast[i];
     // Removes the date portion
-    const date = day.dt_txt.split(" ")[0];
+    const date = day.dt_txt.split(' ')[0];
 
-    const container = document.getElementById("day" + dayCounter);
+    const container = document.getElementById('day' + dayCounter);
     container.innerHTML = `
       <h2>${date}</h2>
+      <img src="${weatherIcon}${day.weather[0].icon}.png" alt="Weather Icon" />
       <p>Temperature: ${day.main.temp} F</p>
       <p>Wind Speed: ${day.wind.speed} m/s</p>
       <p>Humidity: ${day.main.humidity} %</p>
@@ -64,10 +66,11 @@ function displayForecastData(data) {
 }
 
 // Function to display weather data for one given city
-function displayWeatherData(city, data) {
-  const container = document.getElementById("weather-container");
+function displayWeatherData(city, data, weatherIcon) {
+  const container = document.getElementById('weather-container');
   container.innerHTML = `
     <h2>${city}</h2>
+    <img src="${weatherIcon}${data.weather[0].icon}.png" alt="Weather Icon" />
     <p>Temperature: ${data.main.temp} F</p>
     <p>Wind Speed: ${data.wind.speed} m/s</p>
     <p>Humidity: ${data.main.humidity} %</p>
@@ -76,22 +79,22 @@ function displayWeatherData(city, data) {
 
 // Function to save searched cities in local storage
 function saveSearch(city) {
-  const history = localStorage.getItem("search-history") || "[]";
+  const history = localStorage.getItem('search-history') || '[]';
   const searchHistory = JSON.parse(history);
   searchHistory.push(city);
-  localStorage.setItem("search-history", JSON.stringify(searchHistory));
+  localStorage.setItem('search-history', JSON.stringify(searchHistory));
 }
 
 // Function to retrieve search history from local storage
 function getSearchHistory() {
-  const history = localStorage.getItem("search-history") || "[]";
+  const history = localStorage.getItem('search-history') || '[]';
   const searchHistory = JSON.parse(history);
-  const container = document.getElementById("search-history");
-  container.innerHTML = "";
+  const container = document.getElementById('search-history');
+  container.innerHTML = '';
   for (const city of searchHistory) {
-    const li = document.createElement("li");
+    const li = document.createElement('li');
     li.innerText = city;
-    li.classList.add("search-item"); // Add the class "search-item"
+    li.classList.add('search-item'); // Add the class "search-item"
     container.appendChild(li);
   }
 }
@@ -119,7 +122,7 @@ function handleWeatherData(city) {
 
 // Function to handle button click
 function handleButtonClick() {
-  const input = document.getElementById("city-input");
+  const input = document.getElementById('city-input');
   const city = input.value;
   handleWeatherData(city);
 }
@@ -132,15 +135,15 @@ function handleSearchHistoryClick(event) {
 
 // Add event listener to search history items
 const searchHistoryContainer = document.getElementById(
-  "search-history-container"
+  'search-history-container'
 );
-searchHistoryContainer.addEventListener("click", function (event) {
-  if (event.target.classList.contains("search-item")) {
+searchHistoryContainer.addEventListener('click', function (event) {
+  if (event.target.classList.contains('search-item')) {
     handleSearchHistoryClick(event);
   }
 });
 
 // Event listeners for button click and search history retrieval
-const searchButton = document.getElementById("search-button");
-searchButton.addEventListener("click", handleButtonClick);
-window.addEventListener("load", getSearchHistory);
+const searchButton = document.getElementById('search-button');
+searchButton.addEventListener('click', handleButtonClick);
+window.addEventListener('load', getSearchHistory);
