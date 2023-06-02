@@ -26,6 +26,7 @@ h1 {
 
 h2 {
     padding-top: 1rem;
+    margin-left: 2rem;
 }
 
 
@@ -71,6 +72,11 @@ h2 {
 /* Style for weather container */
 #weather-container {
     margin-top: 20px;
+    padding: 3rem;
+    background-color: navy;
+    color: white;
+    border-radius: 1rem;
+    justify-content: center;
 }
 
 #search-history-container {
