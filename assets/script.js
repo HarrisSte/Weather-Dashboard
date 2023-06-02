@@ -65,7 +65,7 @@ function displayForecastData(data) {
 }
 
 // Function to display weather data for one given city
-function displayWeatherData(city, data, weatherIcon) {
+function displayWeatherData(city, data) {
   const container = document.getElementById('weather-container');
   container.innerHTML = `
     <h2>${city}</h2>
