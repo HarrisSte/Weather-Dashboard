@@ -73,21 +73,27 @@ h2 {
     margin-top: 20px;
 }
 
+#search-history-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 80rem;
+    margin-bottom: 20px;
+}
+
 #search-history-container h2 {
     font-size: 25px;
     font-weight: bold;
     border: solid black 1px;
-    margin-right: 80rem;
+    margin-right: 5px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 #search-history {
     list-style: none;
     padding: 0;
-    margin-right: 80rem;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-right: 5px;
 }
 
 /* Add this style for search history buttons */
@@ -101,6 +107,7 @@ h2 {
     border-radius: 5px;
     cursor: pointer;
     text-align: center;
+    margin: 5px 0;
 }
 
 /* Add hover effect on search history buttons */
@@ -159,5 +166,7 @@ h2 {
 
 /* Style for five-day forecast section */
 #fiveDay {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
 }
