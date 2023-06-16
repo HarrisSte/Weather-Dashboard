@@ -22,50 +22,51 @@
     </header>
 
     <aside id="search-area" class="search">
-        <input type="text" id="city-input">
-        <button id="search-button">Search</button>
+        <div class="search-container">
+            <input type="text" id="city-input">
+            <button id="search-button">Search</button>
+        </div>
+        <div id="search-history-container">
+            
+            <ul id="search-history" class="search-item"></ul>
+        </div>
     </aside>
+
 
     <div id="weather-container"></div>
 
-    <div id="search-history-container">
-        <h2>Search History</h2>
-        <ul id="search-history" class="search-item"></ul>
 
-    </div>
-
-
-<main class="container col-md-9">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div id="dailyWeather" class="body">
+    <main class="container col-md-9">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div id="dailyWeather" class="body">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <main class="container col-md-9">
-        <div id="fiveDayForecast" class="row">
-            <h1>Five Day Forecast</h1>
-        </div>
+        <main class="container col-md-9">
+            <div id="fiveDayForecast" class="row">
+                <h1>Five Day Forecast</h1>
+            </div>
 
-        <section class="row">
-            <div class="col-md-2" id="day0"></div>
-            <div class="col-md-2" id="day1"></div>
-            <div class="col-md-2" id="day2"></div>
-            <div class="col-md-2" id="day3"></div>
-            <div class="col-md-2" id="day4"></div>
-        </section>
-    </div>
-</main>
+            <section class="row">
+                <div class="col-md-2" id="day0"></div>
+                <div class="col-md-2" id="day1"></div>
+                <div class="col-md-2" id="day2"></div>
+                <div class="col-md-2" id="day3"></div>
+                <div class="col-md-2" id="day4"></div>
+            </section>
+            </div>
+        </main>
 
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
-        integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+            integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
 
-    <script src="./assets/script.js"></script>
+        <script src="./assets/script.js"></script>
 </body>
 
 </html>
