@@ -1,15 +1,17 @@
 # WEATHER DASHBOARD
 
 # Description
-Using OpenWeather API, users can search for a city of their choice and be presented with current weather situation as well as a five-day forecast. The information rendered for each is the current temperature, wind speed, and humidity. The current day will be separate from the five day forecast; with the forecast containing the dates for each day.
 
-If a user wished to go back to previously searched city, all they will need to do is click on the name of the city on the left of the application under 'search histroy'. All previous user searched are stored locally on the web browser. 
+Using the OpenWeather API, users can search for a city of their choice and be presented with the current weather situation as well as a five-day forecast. The information provided includes the current temperature, wind speed, and humidity for each. The current day will be displayed separately from the five-day forecast, with the forecast indicating the dates for each day.
+
+If a user wishes to revisit a previously searched city, all they need to do is click on the city name on the left side of the application under 'search history'. All previous user searches are stored locally in the web browser.
 
 # Link
 https://harrisste.github.io/Weather-Dashboard/
 
 # Screenshot
-![M6Chall](https://user-images.githubusercontent.com/126029841/236972697-ff021395-47d2-4569-95c8-a05cb4c6443b.PNG)
+![WeatherDB2](https://github.com/HarrisSte/Weather-Dashboard/assets/126029841/d4b509bb-8803-4348-b6c7-110d8ad73852)
+
 
 
 # Contribtions
