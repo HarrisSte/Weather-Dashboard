@@ -1,4 +1,4 @@
-//Variables & API key from OpenWeather API
+// Variables & API key from OpenWeather API
 const apiKey = '59e621791d69e3841a207d4d84317cf4';
 const day1 = $('.day1');
 const day2 = $('.day2');
@@ -40,7 +40,7 @@ async function fetchForecastDataLatLon(lat, lon) {
   return data;
 }
 
-//Function that displays the five day forecast
+// Function that displays the five day forecast
 function displayForecastData(data) {
   const forecast = data.list;
 
@@ -136,16 +136,18 @@ function handleSearchHistoryClick(event) {
 }
 
 // Add event listener to search history items
-const searchHistoryContainer = document.getElementById(
-  'search-history-container'
-);
+const searchHistoryContainer = document.getElementById('search-history-container');
 searchHistoryContainer.addEventListener('click', function (event) {
   if (event.target.classList.contains('search-item')) {
     handleSearchHistoryClick(event);
   }
 });
 
-// Event listeners for button click and search history retrieval
+// Event listener for button click
 const searchButton = document.getElementById('search-button');
 searchButton.addEventListener('click', handleButtonClick);
-window.addEventListener('load', getSearchHistory);
+
+// Event listener for page load
+window.addEventListener('load', function () {
+  getSearchHistory();
+});

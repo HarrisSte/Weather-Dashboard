@@ -24,7 +24,14 @@ h1 {
     font-size: 26px;
 }
 
-
+/* Style for search container */
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    justify-content: flex-start;
+    width: 30%;
+}
 
 #content-wrapper {
     display: flex;
@@ -33,18 +40,18 @@ h1 {
     flex-wrap: wrap;
 }
 
-
 #weather-container {
     border: 2px solid black;
     margin-right: 15rem;
     margin-left: 15rem;
     align-items: center;
     font: center;
+    margin-top: -10rem;
 }
 
 #fiveDayForecast h1 {
     font-size: 37px;
-        margin-left: 10rem;
+    margin-left: 10rem;
     color: navy;
     flex-basis: calc(100% - 320px);
 }
@@ -77,22 +84,14 @@ h1 {
 
 /* Style for weather container */
 #weather-container {
-margin-top: -25rem;
-    padding: 3rem;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1rem;
     background-color: navy;
     color: white;
     border-radius: 1rem;
-    justify-content: center;
 }
 
-/* Style for search container */
-.search-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    justify-content: flex-start;
-    width: 30%;
-}
 
 #search-history-container {
     margin-right: 10px;
