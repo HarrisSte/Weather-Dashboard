@@ -50,7 +50,7 @@ function displayForecastData(data) {
   for (let i = 0; i < forecast.length; i += 8) {
     const day = forecast[i];
     // Removes the date portion
-    const date = day.dt_txt.split(' ')[0];
+    const date = new Date(day.dt_txt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 
     const container = document.getElementById('day' + dayCounter);
     container.innerHTML = `
@@ -65,10 +65,11 @@ function displayForecastData(data) {
 }
 
 // Function to display weather data for one given city
-function displayWeatherData(city, data) {
+function displayWeatherData(city, data, currentDate) {
   const container = document.getElementById('weather-container');
   container.innerHTML = `
     <h2>${city}</h2>
+    <p>${currentDate}</p>
     <img src="${weatherIcon}${data.weather[0].icon}.png" alt="Weather Icon" />
     <p>Temperature: ${data.main.temp} F</p>
     <p>Wind Speed: ${data.wind.speed} m/s</p>
@@ -100,11 +101,13 @@ function getSearchHistory() {
 
 // Function to handle button click to fetch and display weather data for a given city
 function handleWeatherData(city) {
+  const currentDate = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }); // Get the current date
+
   fetchCityLatLon(city)
     .then((cityData) => {
       fetchWeatherDataLatLon(cityData[0].lat, cityData[0].lon)
         .then((data) => {
-          displayWeatherData(city, data);
+          displayWeatherData(city, data, currentDate); // Pass the current date to the displayWeatherData function
           saveSearch(city);
           getSearchHistory();
         })

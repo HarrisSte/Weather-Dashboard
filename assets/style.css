@@ -30,6 +30,8 @@ h2 {
 }
 
 
+
+
 #weather-container {
     border: 2px solid black;
     margin-right: 15rem;
@@ -122,45 +124,11 @@ h2 {
 }
 
 /* Style for daily weather card */
-#day0 {
-    background-color: lightblue;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-#day1 {
-    background-color: lightblue;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-
-#day2 {
-    background-color: lightblue;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-
-#day3 {
-    background-color: lightblue;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-
+/* Style for daily weather card */
+#day0,
+#day1,
+#day2,
+#day3,
 #day4 {
     background-color: lightblue;
     border: 1px solid #ccc;
@@ -171,8 +139,18 @@ h2 {
 }
 
 /* Style for five-day forecast section */
-#fiveDay {
+#fiveDayForecast {
     margin-bottom: 20px;
-    display: flex;
-    flex-wrap: wrap;
+}
+
+/* Add responsive styling for small screens */
+@media (max-width: 576px) {
+
+    #day0,
+    #day1,
+    #day2,
+    #day3,
+    #day4 {
+        width: 100%;
+    }
 }
