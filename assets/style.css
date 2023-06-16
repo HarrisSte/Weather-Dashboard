@@ -29,7 +29,12 @@ h2 {
     margin-left: 2rem;
 }
 
-
+#content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
 
 
 #weather-container {
@@ -38,13 +43,13 @@ h2 {
     margin-left: 15rem;
     align-items: center;
     font: center;
-
 }
 
 #fiveDayForecast h1 {
     font-size: 35px;
     margin-left: 28rem;
-    color: navy
+    color: navy;
+    flex-basis: calc(100% - 320px);
 }
 
 /* Style for header */
@@ -84,8 +89,9 @@ h2 {
 #search-history-container {
     display: flex;
     flex-wrap: wrap;
-    margin-right: 80rem;
+    margin-right: 20px;
     margin-bottom: 20px;
+    flex-basis: 300px;
 }
 
 #search-history-container h2 {
